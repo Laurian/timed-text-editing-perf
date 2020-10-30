@@ -1,12 +1,13 @@
 import React, { useMemo, useRef, useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import VisibilitySensor from 'react-visibility-sensor';
 
 import samples from '../data/samples';
 
 import './SimplePlayer.css';
 
-const SimplePlayer = () => {
+const SimplePlayerLightDOM = () => {
   const { id } = useParams();
   const player = useRef();
   const { audio, transcript } = useMemo(() => samples.find(({ id: _id }) => _id === id), [id]);
@@ -43,13 +44,19 @@ const SimplePlayer = () => {
 const Transcript = ({ segments }) => (
   <div className="transcript">
     {segments.map(({ speaker, start, duration, items }) => (
-      <p data-speaker={speaker} data-start={start} data-duration={duration} data-segment={`${start}+${duration}`}>
-        {items.map(([text, start, duration]) => (
-          <span data-start={start} data-duration={duration} data-item={`${start}+${duration}`}>
-            {`${text} `}
-          </span>
-        ))}
-      </p>
+      <VisibilitySensor partialVisibility={true}>
+        {({ isVisible }) => (
+          <p data-speaker={speaker} data-start={start} data-duration={duration} data-segment={`${start}+${duration}`}>
+            {isVisible
+              ? items.map(([text, start, duration]) => (
+                  <span data-start={start} data-duration={duration} data-item={`${start}+${duration}`}>
+                    {`${text} `}
+                  </span>
+                ))
+              : items.map(([text]) => text).join(' ')}
+          </p>
+        )}
+      </VisibilitySensor>
     ))}
   </div>
 );
@@ -93,4 +100,4 @@ const Karaoke = ({ time, segments }) => {
   );
 };
 
-export default SimplePlayer;
+export default SimplePlayerLightDOM;
