@@ -1,0 +1,31 @@
+.simple-player audio {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.simple-player .transcript {
+  padding: 5em 2em;
+  font-family: 'IBM Plex Mono', source-code-pro, Monaco, Menlo, Consolas, 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.7em;
+  /* contain: paint; */
+}
+
+.simple-player em {
+  display: block;
+  padding: 5em 2em;
+}
+
+.simple-player .transcript p::before {
+  content: attr(data-speaker);
+  display: block;
+  color: blue;
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.simple-player .transcript p {
+  contain: paint;
+}
