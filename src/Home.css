@@ -1,5 +1,9 @@
 .home {
-  padding: 5em 2em;
+  padding: 2em;
+}
+
+.home h3 {
+  padding-top: 2em;
 }
 
 .home li + li {

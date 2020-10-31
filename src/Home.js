@@ -7,6 +7,7 @@ const Home = () => {
   const [liteDOM, setLiteDOM] = useState(true);
   const [contentVis, setContentVis] = useState(true);
   const [genSC, setGenSC] = useState(true);
+  const [paginated, setPaginated] = useState(true);
 
   return (
     <div className="home">

@@ -125,11 +125,8 @@ const Karaoke = ({ time, segments, genSC }) => {
   );
 
   const segment = useMemo(() => segments[segmentIndex], [segments, segmentIndex]);
-
   const playedSegments = useMemo(() => [...segments].slice(0, segmentIndex), [segments, segmentIndex]);
-
   const items = useMemo(() => segment?.items.filter(([text, start, duration]) => start <= time), [segment, time]);
-
   const item = useMemo(() => items?.slice(-1).pop(), [items]);
 
   useEffect(() => {
