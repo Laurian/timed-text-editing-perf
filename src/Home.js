@@ -34,6 +34,38 @@ const Home = () => {
           </li>
         ))}
       </ul>
+
+      <h3>Simple Editor</h3>
+      <fieldset>
+        <legend>Options</legend>
+        <label>
+          <input type="checkbox" checked={liteDOM} onChange={({ target: { checked } }) => setLiteDOM(checked)} />
+          render ligher DOM off-screen
+        </label>
+        <label>
+          <input type="checkbox" checked={contentVis} onChange={({ target: { checked } }) => setContentVis(checked)} />
+          use <code>content-visibility: auto;</code>
+        </label>
+        <label>
+          <input type="checkbox" checked={genSC} onChange={({ target: { checked } }) => setGenSC(checked)} />
+          use general sibling combinator <code>~</code> for karaoke
+        </label>
+        <label>
+          <input type="checkbox" checked={paginated} onChange={({ target: { checked } }) => setPaginated(checked)} />
+          paginate = use multiple editors
+        </label>
+      </fieldset>
+      <ul>
+        {samples.map(({ id, title }) => (
+          <li key={id}>
+            <a
+              href={`/SimpleEditor/${id}?liteDOM=${liteDOM}&contentVis=${contentVis}&genSC=${genSC}&paginated=${paginated}`}
+            >
+              {title}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

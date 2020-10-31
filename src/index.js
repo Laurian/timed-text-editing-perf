@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Home from './Home';
 import SimplePlayer from './player/SimplePlayer';
+import SimpleEditor from './draftjs/SimpleEditor';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -15,6 +16,9 @@ ReactDOM.render(
       <Switch>
         <Route path="/SimplePlayer/:id">
           <SimplePlayer />
+        </Route>
+        <Route path="/SimpleEditor/:id">
+          <SimpleEditor />
         </Route>
         <Route path="/">
           <Home />

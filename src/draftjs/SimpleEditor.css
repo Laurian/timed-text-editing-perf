@@ -1,3 +1,59 @@
 .simple-editor audio {
+  position: fixed;
   width: 100%;
+  z-index: 100;
+}
+
+audio:focus {
+  outline: none;
+}
+
+.simple-editor .transcript {
+  padding: 5em 2em;
+  font-family: 'IBM Plex Mono', source-code-pro, Monaco, Menlo, Consolas, 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7em;
+}
+
+.simple-editor.genSC-true .transcript {
+  font-weight: 500;
+}
+
+.simple-editor em {
+  display: block;
+  padding: 5em 2em;
+}
+
+.simple-editor .WrapperBlock::before {
+  content: attr(data-speaker);
+  display: block;
+  color: blue;
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.simple-editor section + section::before {
+  content: 'page break';
+  display: block;
+  color: red;
+  font-size: 10px;
+  font-weight: normal;
+}
+
+.simple-editor .WrapperBlock {
+  color: blue;
+}
+
+.simple-editor .WrapperBlock .Token {
+  color: black;
+}
+
+.simple-editor .WrapperBlock + .WrapperBlock {
+  margin-top: 0.5em;
+}
+
+.simple-editor.contentVis-true .public-DraftStyleDefault-block {
+  content-visibility: auto;
+  contain-intrinsic-size: 200px;
 }
