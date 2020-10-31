@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Home from './Home';
 import SimplePlayer from './player/SimplePlayer';
-import SimplePlayerLightDOM from './player/SimplePlayerLightDOM';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -14,9 +13,6 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
-        <Route path="/SimplePlayerLightDOM/:id">
-          <SimplePlayerLightDOM />
-        </Route>
         <Route path="/SimplePlayer/:id">
           <SimplePlayer />
         </Route>

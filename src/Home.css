@@ -1,3 +1,24 @@
 .home {
   padding: 5em 2em;
 }
+
+.home li + li {
+  margin-top: 1em;
+}
+
+.home code {
+  font-size: 14px;
+  background-color: #eeeeee;
+}
+
+.home label {
+  display: block;
+}
+
+.home label + label {
+  margin-top: 0.5em;
+}
+
+.home fieldset {
+  border: 1px solid #ccc;
+}

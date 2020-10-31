@@ -1,4 +1,4 @@
-.simple-player audio {
+.simple-player2 audio {
   position: fixed;
   width: 100%;
   z-index: 100;
@@ -8,24 +8,21 @@ audio:focus {
   outline: none;
 }
 
-.simple-player .transcript {
+.simple-player2 .transcript {
   padding: 5em 2em;
   font-family: 'IBM Plex Mono', source-code-pro, Monaco, Menlo, Consolas, 'Courier New', monospace;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.7em;
+  /* contain: paint; */
 }
 
-.simple-player.genSC-true .transcript {
-  font-weight: 500;
-}
-
-.simple-player em {
+.simple-player2 em {
   display: block;
   padding: 5em 2em;
 }
 
-.simple-player .transcript p::before {
+.simple-player2 .transcript p::before {
   content: attr(data-speaker);
   display: block;
   color: blue;
@@ -33,7 +30,6 @@ audio:focus {
   font-weight: normal;
 }
 
-.simple-player.contentVis-true .transcript p {
-  content-visibility: auto;
-  contain-intrinsic-size: 200px;
+.simple-player2 .transcript p {
+  contain: paint;
 }

@@ -1,26 +1,40 @@
+import React, { useMemo, useRef, useState, useEffect, useCallback } from 'react';
+import samples from './data/samples';
+
 import './Home.css';
 
-const Home = () => (
-  <div className="home">
-    <p>Simple Player</p>
-    <ul>
-      <li>
-        <a href="/SimplePlayer/EM">Joe Rogan Experience #1169 - Elon Musk (2h37)</a>
-      </li>
-      <li>
-        <a href="/SimplePlayer/AJ">Joe Rogan Experience #1255 - Alex Jones Returns! (4h~)</a>
-      </li>
-    </ul>
-    <p>Simple Player with ligther DOM off-screen</p>
-    <ul>
-      <li>
-        <a href="/SimplePlayerLightDOM/EM">Joe Rogan Experience #1169 - Elon Musk (2h37)</a>
-      </li>
-      <li>
-        <a href="/SimplePlayerLightDOM/AJ">Joe Rogan Experience #1255 - Alex Jones Returns! (4h~)</a>
-      </li>
-    </ul>
-  </div>
-);
+const Home = () => {
+  const [liteDOM, setLiteDOM] = useState(true);
+  const [contentVis, setContentVis] = useState(true);
+  const [genSC, setGenSC] = useState(true);
+
+  return (
+    <div className="home">
+      <h3>Simple Player</h3>
+      <fieldset>
+        <legend>Options</legend>
+        <label>
+          <input type="checkbox" checked={liteDOM} onChange={({ target: { checked } }) => setLiteDOM(checked)} />
+          render ligher DOM off-screen
+        </label>
+        <label>
+          <input type="checkbox" checked={contentVis} onChange={({ target: { checked } }) => setContentVis(checked)} />
+          use <code>content-visibility: auto;</code>
+        </label>
+        <label>
+          <input type="checkbox" checked={genSC} onChange={({ target: { checked } }) => setGenSC(checked)} />
+          use general sibling combinator <code>~</code> for karaoke
+        </label>
+      </fieldset>
+      <ul>
+        {samples.map(({ id, title }) => (
+          <li key={id}>
+            <a href={`/SimplePlayer/${id}?liteDOM=${liteDOM}&contentVis=${contentVis}&genSC=${genSC}`}>{title}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default Home;
